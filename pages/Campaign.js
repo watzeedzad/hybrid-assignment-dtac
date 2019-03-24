@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, FlatList, ScrollView, Image } from 'react-native';
 import { Card } from 'react-native-paper'
+import { Font, AppLoading } from 'expo';
 
 const data = [
     { id: 0, text: '::::: Polar Polar Challenge :::::', image: require("../assets/campaigns/campaign1.jpg") },
@@ -20,8 +21,15 @@ export class Campaign extends Component {
         super(props);
 
         this.state = {
-
+            fontLoaded: false
         };
+    }
+
+    async componentWillMount() {
+        await Font.loadAsync({
+            'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
+        });
+        this.setState({fontLoaded: true});
     }
 
     renderItem = ({ item }) => {
@@ -38,6 +46,10 @@ export class Campaign extends Component {
     }
 
     render() {
+
+        if (!this.state.fontLoaded) {
+            return <AppLoading/>
+        }
 
         return (
             <View style={styles.container}>
@@ -71,9 +83,9 @@ export class Campaign extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.8,
         justifyContent: 'center',
-        paddingTop: 30,
+        // paddingTop: 30,
         backgroundColor: '#FFF'
     },
     card: {
@@ -90,7 +102,8 @@ const styles = StyleSheet.create({
     campaignName: {
         margin: 10,
         fontSize: 15,
-        textAlign: 'left'
+        textAlign: 'left',
+        fontFamily: 'niramit-regular',
     },
     buttonPanel: {
         margin: 8,
