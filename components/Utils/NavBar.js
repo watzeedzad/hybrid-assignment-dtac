@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 0.1,
         flexDirection: 'row',
+        backgroundColor: '#EEEEEE',
     },
     usageNav: {
         flex: 0.2,
