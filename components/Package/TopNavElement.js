@@ -28,7 +28,9 @@ class TopNavElement extends Component {
         }
         return (
             <View style={styles.container}>
-                <Image style={styles.iconPic} source={this.props.iconPic}/>
+                <View style={styles.iconContainer}>
+                    <Image style={styles.iconPic} source={this.props.iconPic}/>
+                </View>
                 <Text style={styles.titleText}> {this.props.titleText} </Text>
             </View>
         );
@@ -38,12 +40,10 @@ class TopNavElement extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 0.15,
-        flexDirection: 'column',
+        // flex: 1,
         backgroundColor: '#FFFFFF',
-        justifyContent: 'center',
-        alignItems: 'center',
         margin: 5,
+        // padding: 4,
         width: 60,
         height: 70,
     },
@@ -53,7 +53,11 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontFamily: 'niramit-regular',
-        fontSize: 14
+        fontSize: 14,
+        textAlign: 'center',
+    },
+    iconContainer: {
+        alignItems: 'center',
     }
 });
 

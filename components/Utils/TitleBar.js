@@ -42,7 +42,7 @@ class TitleBar extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 0.1,
+        flex: 0,
         flexDirection: 'row',
         backgroundColor: '#19AAF8',
         marginTop: StatusBar.currentHeight,
