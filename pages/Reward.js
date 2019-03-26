@@ -1,13 +1,54 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import TitleBar from '../components/Utils/TitleBar';
+import { Font, AppLoading } from 'expo';
 
-// create a component
 class Reward extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fontLoaded: false
+        };
+    }
+
+    async componentDidMount() {
+        await Font.loadAsync({
+            'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
+        });
+        this.setState({ fontLoaded: true });
+    }
     render() {
+
+        if (!this.state.fontLoaded) {
+            return <AppLoading />
+        }
+
         return (
             <View style={styles.container}>
-                <Text>Reward</Text>
+                <TitleBar titleText={'Reward'} />
+                <ScrollView>
+                    <View style={styles.buttonPanel}>
+                        <View style={{ flex: 2 }}>
+                            <Image
+                                style={{ height: 30, width: 120 }}
+                                source={require("../assets/rewards/button1.jpg")}
+                            />
+                        </View>
+                        <View style={{ flex: 2, marginLeft: 30 }}>
+                            <Image
+                                style={{ height: 30, width: 120 }}
+                                source={require("../assets/rewards/button2.jpg")}
+                            />
+                        </View>
+                        <View style={{ flex: 3 }}>
+                        </View>
+                    </View>
+                    <View>
+                        
+                    </View>
+                </ScrollView>
             </View>
         );
     }
@@ -17,9 +58,12 @@ class Reward extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: '#ffffff'
+    },
+    buttonPanel: {
+        flex: 1,
+        margin: 8,
+        flexDirection: 'row'
     },
 });
 

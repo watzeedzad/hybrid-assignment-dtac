@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, FlatList, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView, Image, Dimensions } from 'react-native';
 import { Card } from 'react-native-paper'
 import { Font, AppLoading } from 'expo';
 import TitleBar from '../components/Utils/TitleBar';
@@ -17,7 +17,7 @@ const data = [
 ]
 
 
-export class Campaign extends Component {
+class Campaign extends Component {
     constructor(props) {
         super(props);
 
@@ -30,16 +30,18 @@ export class Campaign extends Component {
         await Font.loadAsync({
             'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
         });
-        this.setState({fontLoaded: true});
+        this.setState({ fontLoaded: true });
     }
 
     renderItem = ({ item }) => {
         return (
             <Card style={styles.card} elevation={3}>
-                <Image
-                    style={styles.image}
-                    source={item.image}
-                />
+                <View style={{ flex: 1,padding:5 }}>
+                    <Image
+                        style={styles.image}
+                        source={item.image}
+                    />
+                </View>
                 <Text style={styles.campaignName}>{item.text}</Text>
             </Card>
         )
@@ -48,24 +50,24 @@ export class Campaign extends Component {
     render() {
 
         if (!this.state.fontLoaded) {
-            return <AppLoading/>
+            return <AppLoading />
         }
 
         return (
             <View style={styles.container}>
-                <TitleBar titleText={'Usage Summary'}/>
+                <TitleBar titleText={'Usage Summary'} />
                 <View style={styles.subContainer}>
                     <ScrollView>
                         <View style={styles.buttonPanel}>
-                            <View style={{flex:1}}>
+                            <View style={{ flex: 1 }}>
                                 <Image
-                                    style={{height:30, width:82}}
+                                    style={{ height: 30, width: 82 }}
                                     source={require("../assets/campaigns/button1.jpg")}
                                 />
                             </View>
-                            <View style={{flex:3,marginLeft:15}}>
+                            <View style={{ flex: 3, marginLeft: 15 }}>
                                 <Image
-                                    style={{height:30, width:210}}
+                                    style={{ height: 30, width: 210 }}
                                     source={require("../assets/campaigns/button2.jpg")}
                                 />
                             </View>
@@ -74,7 +76,7 @@ export class Campaign extends Component {
                             <FlatList
                                 data={data}
                                 renderItem={this.renderItem}
-                                keyExtractor={(item, index) => item.id.toString()}
+                                keyExtractor={(item) => item.id.toString()}
                             />
                         </View>
                     </ScrollView>
@@ -87,8 +89,6 @@ export class Campaign extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'center',
-        // paddingTop: 30,
         backgroundColor: '#ffffff'
     },
     card: {
@@ -96,12 +96,12 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         marginLeft: 10,
         marginRight: 10,
-        padding: 5
     },
     image: {
-        width: 328,
-        height: 200,
-        resizeMode: 'contain',
+        width: Dimensions.get('window').width*0.92,
+        height: 230,
+        alignSelf: 'center',
+        resizeMode: 'cover',
     },
     campaignName: {
         margin: 10,
