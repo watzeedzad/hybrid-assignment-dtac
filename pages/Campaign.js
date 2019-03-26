@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, FlatList, ScrollView, Image } from 'react-native';
 import { Card } from 'react-native-paper'
 import { Font, AppLoading } from 'expo';
+import TitleBar from '../components/Utils/TitleBar';
 
 const data = [
     { id: 0, text: '::::: Polar Polar Challenge :::::', image: require("../assets/campaigns/campaign1.jpg") },
@@ -25,7 +26,7 @@ export class Campaign extends Component {
         };
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         await Font.loadAsync({
             'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
         });
@@ -34,7 +35,6 @@ export class Campaign extends Component {
 
     renderItem = ({ item }) => {
         return (
-
             <Card style={styles.card} elevation={3}>
                 <Image
                     style={styles.image}
@@ -53,29 +53,32 @@ export class Campaign extends Component {
 
         return (
             <View style={styles.container}>
-                <ScrollView>
-                    <View style={styles.buttonPanel}>
-                        <View style={{flex:1}}>
-                            <Image
-                                style={{height:30, width:82}}
-                                source={require("../assets/campaigns/button1.jpg")}
+                <TitleBar titleText={'Usage Summary'}/>
+                <View style={styles.subContainer}>
+                    <ScrollView>
+                        <View style={styles.buttonPanel}>
+                            <View style={{flex:1}}>
+                                <Image
+                                    style={{height:30, width:82}}
+                                    source={require("../assets/campaigns/button1.jpg")}
+                                />
+                            </View>
+                            <View style={{flex:3,marginLeft:15}}>
+                                <Image
+                                    style={{height:30, width:210}}
+                                    source={require("../assets/campaigns/button2.jpg")}
+                                />
+                            </View>
+                        </View>
+                        <View>
+                            <FlatList
+                                data={data}
+                                renderItem={this.renderItem}
+                                keyExtractor={(item, index) => item.id.toString()}
                             />
                         </View>
-                        <View style={{flex:3,marginLeft:15}}>
-                            <Image
-                                style={{height:30, width:210}}
-                                source={require("../assets/campaigns/button2.jpg")}
-                            />
-                        </View>
-                    </View>
-                    <View>
-                        <FlatList
-                            data={data}
-                            renderItem={this.renderItem}
-                            keyExtractor={(item, index) => item.id.toString()}
-                        />
-                    </View>
-                </ScrollView>
+                    </ScrollView>
+                </View>
             </View>
         );
     }
@@ -83,10 +86,10 @@ export class Campaign extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.8,
-        justifyContent: 'center',
+        flex: 1,
+        // justifyContent: 'center',
         // paddingTop: 30,
-        backgroundColor: '#F5F5F5'
+        backgroundColor: '#ffffff'
     },
     card: {
         marginTop: 8,
@@ -97,7 +100,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: 328,
-        height: 200
+        height: 200,
+        resizeMode: 'contain',
     },
     campaignName: {
         margin: 10,
@@ -108,6 +112,10 @@ const styles = StyleSheet.create({
     buttonPanel: {
         margin: 8,
         flexDirection: 'row'
+    },
+    subContainer: {
+        flex: 1,
+        flexDirection: 'column'
     }
 });
 

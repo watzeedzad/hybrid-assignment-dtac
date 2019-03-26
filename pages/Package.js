@@ -2,36 +2,38 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import TopNavElement from '../components/Package/TopNavElement';
+import TitleBar from '../components/Utils/TitleBar';
+import { Font, AppLoading } from 'expo';
 
 const topNavElementData = [
     {
         id: 0,
-        iconPath: '/assets/package/icon/packageHistory.png',
+        iconPath: require('../assets/package/icon/packageHistory.png'),
         title: 'Package History'
     },
     {
         id: 1,
-        iconPath: '/assets/package/icon/volumeBooster.png',
+        iconPath: require('../assets/package/icon/volumeBooster.png'),
         title: 'Volume Booster'
     },
     {
         id: 2,
-        iconPath: '/assets/package/icon/speedBooster.png',
+        iconPath: require('../assets/package/icon/speedBooster.png'),
         title: 'Speed Booster'
     },
     {
         id: 3,
-        iconPath: '/assets/package/icon/voice.png',
+        iconPath: require('../assets/package/icon/voice.png'),
         title: 'Voice'
     },
     {
         id: 4,
-        iconPath: '/assets/package/icon/chatSocial.png',
+        iconPath: require('../assets/package/icon/chatSocial.png'),
         title: 'Chat & Social'
     },
     {
         id: 5,
-        iconPath: '/assets/package/icon/mainPackage.png',
+        iconPath: require('../assets/package/icon/mainPackage.png'),
         title: 'Main Package'
     }
 ]
@@ -63,15 +65,18 @@ class Package extends Component {
         );
     }
 
-    keyExtractor = ({id}) => (id);
+    keyExtractor = ({id}) => id.toString();
 
     render() {
         return (
             <View style={styles.container}>
+                <TitleBar titleText={'My menu'}/>
                 <FlatList
                     data={topNavElementData}
                     renderItem={this.renderItem}
                     keyExtractor={this.keyExtractor}
+                    horizontal={true}
+                    style={{backgroundColor: '#ffffff'}}
                 />
             </View>
         );
@@ -81,7 +86,7 @@ class Package extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 0.8,
+        flex: 1,
         backgroundColor: '#F5F5F5',
     },
 });
