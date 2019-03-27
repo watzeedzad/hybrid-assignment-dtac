@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, FlatList, ScrollView, Image, Dimensions } from 'react-native';
-import { Card } from 'react-native-paper'
-import { Font, AppLoading } from 'expo';
+import { StyleSheet, Text, View, FlatList, ScrollView, Image } from 'react-native';
 import TitleBar from '../components/Utils/TitleBar';
+import CampaignItem from '../components/Campaign/CampaignItem'
 
 const data = [
     { id: 0, text: '::::: Polar Polar Challenge :::::', image: require("../assets/campaigns/campaign1.jpg") },
@@ -26,32 +25,13 @@ class Campaign extends Component {
         };
     }
 
-    async componentDidMount() {
-        await Font.loadAsync({
-            'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
-        });
-        this.setState({ fontLoaded: true });
-    }
-
     renderItem = ({ item }) => {
         return (
-            <Card style={styles.card} elevation={3}>
-                <View style={{ flex: 1,padding:5 }}>
-                    <Image
-                        style={styles.image}
-                        source={item.image}
-                    />
-                </View>
-                <Text style={styles.campaignName}>{item.text}</Text>
-            </Card>
+            <CampaignItem item={item}/>
         )
     }
 
     render() {
-
-        if (!this.state.fontLoaded) {
-            return <AppLoading />
-        }
 
         return (
             <View style={styles.container}>
@@ -90,24 +70,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffff'
-    },
-    card: {
-        marginTop: 8,
-        marginBottom: 8,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    image: {
-        width: Dimensions.get('window').width*0.92,
-        height: 230,
-        alignSelf: 'center',
-        resizeMode: 'cover',
-    },
-    campaignName: {
-        margin: 10,
-        fontSize: 15,
-        textAlign: 'left',
-        fontFamily: 'niramit-regular',
     },
     buttonPanel: {
         margin: 8,
