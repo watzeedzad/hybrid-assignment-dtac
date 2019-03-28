@@ -1,11 +1,12 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Dimensions, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
 import TopNavElement from '../components/Package/TopNavElement';
 import TitleBar from '../components/Utils/TitleBar';
 import { Font, AppLoading } from 'expo';
 import Carousel from 'react-native-banner-carousel';
 import { Card } from 'react-native-paper'
+import PackageContent from '../components/Package/PackageContent';
 
 const BannerWidth = (Dimensions.get('window').width)*0.8;
 const BannerHeight = 200;
@@ -17,6 +18,52 @@ const images = [
     require('../assets/package/banner/banner4.png'),
     require('../assets/package/banner/banner5.png'),
     require('../assets/package/banner/banner6.png'),
+]
+
+const recommendedAddOnData = [
+    {
+        id: 0,
+        packageTitle: 'Free calls any number 24 hrs for 10 days',
+        packagePrice: 99,
+        packageCurrency: 'Baht',
+        packageCallDuration: 'Unlimited',
+        packageDays: '10 Days'
+    },
+    {
+        id: 1,
+        packageTitle: 'Free calls any number 200 mins for 30 days',
+        packagePrice: 99,
+        packageCurrency: 'Baht',
+        packageCallDuration: '200 minutes',
+        packageDays: '30 Days'
+    },
+    {
+        id: 2,
+        packageTitle: 'dtac Internet 4GB 49B for7days',
+        packagePrice: 49,
+        packageCurrency: 'Baht',
+        packageCallDuration: '4 GB',
+        packageDays: '7 Day'
+    },
+]
+
+const topHitData = [
+    {
+        id: 0,
+        packageTitle: 'YouTube and LINE TV 1GB for 5 days',
+        packagePrice: 69,
+        packageCurrency: 'Baht',
+        packageCallDuration: '1 GB',
+        packageDays: '5 Days'
+    },
+    {
+        id: 1,
+        packageTitle: 'Free calls 100 mins & dtac internet 1GB for 30 days',
+        packagePrice: 99,
+        packageCurrency: 'Baht',
+        packageCallDuration: '1 GB and 100 minutes',
+        packageDays: '30 Days'
+    },
 ]
 
 const topNavElementData = [
@@ -80,6 +127,19 @@ class Package extends Component {
         );
     }
 
+    renderPackageItem = ({item}) => {
+        console.log(item);
+        return (
+            <PackageContent
+                packageTitle={item.packageTitle}
+                packagePrice={item.packagePrice}
+                packageCurrency={item.packageCurrency}
+                packageCallDuration={item.packageCallDuration}
+                packageDays={item.packageDays}
+            />
+        )
+    }
+
     keyExtractor = ({id}) => id.toString();
 
     renderPage(image, index) {
@@ -121,12 +181,19 @@ class Package extends Component {
                     <View style={styles.textLabel}>
                         <Text style={[{fontSize: 18, fontFamily: 'niramit-regular'}]}> Recommended Add-On </Text>
                     </View>
-                    <Card style={styles.card} elevation={3}>
-                        <Text> Free calls any numbers 24 hrs for 10 days </Text>
-                    </Card>
+                    <FlatList
+                        data={recommendedAddOnData}
+                        renderItem={this.renderPackageItem}
+                        keyExtractor={this.keyExtractor}
+                    />
                     <View style={styles.textLabel}>
                         <Text style={[{fontSize: 18, fontFamily: 'niramit-regular'}]}> Top Hit </Text>
                     </View>
+                    <FlatList
+                        data={topHitData}
+                        renderItem={this.renderPackageItem}
+                        keyExtractor={this.keyExtractor}
+                    />
                 </ScrollView>
             </View>
         );
@@ -154,20 +221,6 @@ const styles = StyleSheet.create({
     },
     flatListHeight: {
         height: 80
-    },
-    card: {
-        marginTop: 8,
-        marginBottom: 8,
-        marginLeft: 52,
-        marginRight: 52,
-        padding: 5
-    },
-    packageInfoLabel1: {
-        flex: 1
-    },
-    packageInfoLabel2: {
-        flex: 1,
-        flexDirection: 'row'
     }
 });
 
