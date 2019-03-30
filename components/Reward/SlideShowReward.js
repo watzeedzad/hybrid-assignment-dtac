@@ -21,9 +21,8 @@ export class SlideShowReward extends Component {
     }
 
     async componentDidMount() {
-        styles.pressedNav = null;
         await Font.loadAsync({
-            'niramit-regular': require('../../assets/fonts/Niramit-Regular.ttf')
+            'kanit-light': require('../../assets/fonts/Kanit/Kanit-Light.ttf')
         });
         this.setState({ fontLoaded: true });
     }
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     titleText: {
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
         fontSize: 16,
         textAlign: 'center',
     },

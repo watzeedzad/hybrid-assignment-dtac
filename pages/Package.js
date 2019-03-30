@@ -5,7 +5,6 @@ import TopNavElement from '../components/Package/TopNavElement';
 import TitleBar from '../components/Utils/TitleBar';
 import { Font, AppLoading } from 'expo';
 import Carousel from 'react-native-banner-carousel';
-import { Card } from 'react-native-paper'
 import PackageContent from '../components/Package/PackageContent';
 
 const BannerWidth = (Dimensions.get('window').width)*0.8;
@@ -112,9 +111,9 @@ class Package extends Component {
 
     async componentDidMount() {
         await Font.loadAsync({
-            'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
+            'kanit-light': require('../assets/fonts/Kanit/Kanit-Light.ttf')
         });
-        this.setState({fontLoaded: true});
+        this.setState({ fontLoaded: true });
     }
 
     renderItem = ({item}) => {
@@ -128,7 +127,7 @@ class Package extends Component {
     }
 
     renderPackageItem = ({item}) => {
-        console.log(item);
+        // console.log(item);
         return (
             <PackageContent
                 packageTitle={item.packageTitle}
@@ -145,7 +144,7 @@ class Package extends Component {
     renderPage(image, index) {
         return (
             <View key={index}>
-                <Image style={{ width: BannerWidth, height: BannerHeight }} source={image}/>
+                <Image style={{ width: BannerWidth, height: BannerHeight, resizeMode: 'contain' }} source={image}/>
             </View>
         );
     }
@@ -179,7 +178,7 @@ class Package extends Component {
                         </Carousel>
                     </View>
                     <View style={styles.textLabel}>
-                        <Text style={[{fontSize: 18, fontFamily: 'niramit-regular'}]}> Recommended Add-On </Text>
+                        <Text style={[{fontSize: 18, fontFamily: 'kanit-light'}]}> Recommended Add-On </Text>
                     </View>
                     <FlatList
                         data={recommendedAddOnData}
@@ -187,7 +186,7 @@ class Package extends Component {
                         keyExtractor={this.keyExtractor}
                     />
                     <View style={styles.textLabel}>
-                        <Text style={[{fontSize: 18, fontFamily: 'niramit-regular'}]}> Top Hit </Text>
+                        <Text style={[{fontSize: 18, fontFamily: 'kanit-light'}]}> Top Hit </Text>
                     </View>
                     <FlatList
                         data={topHitData}

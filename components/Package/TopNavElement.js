@@ -15,11 +15,10 @@ class TopNavElement extends Component {
     }
     
     async componentDidMount() {
-        styles.pressedNav = null;
         await Font.loadAsync({
-            'niramit-regular': require('../../assets/fonts/Niramit-Regular.ttf')
+            'kanit-light': require('../../assets/fonts/Kanit/Kanit-Light.ttf')
         });
-        this.setState({fontLoaded: true});
+        this.setState({ fontLoaded: true });
     }
 
     render() {
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
         height: 30
     },
     titleText: {
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
         fontSize: 14,
         textAlign: 'center',
     },

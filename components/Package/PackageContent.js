@@ -2,9 +2,25 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
+import { Font, AppLoading } from 'expo';
 
 // create a component
 class PackageContent extends Component {
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         fontLoaded: false
+      };
+    };
+    
+    async componentDidMount() {
+        await Font.loadAsync({
+            'kanit-light': require('../../assets/fonts/Kanit/Kanit-Light.ttf')
+        });
+        this.setState({ fontLoaded: true });
+    }
+
     render() {
         return (
             <Card style={styles.card} elevation={3}>
@@ -12,16 +28,16 @@ class PackageContent extends Component {
                 <View style={styles.packageContentLabel}>
                     <View style={styles.packageContentItem1}>
                         <Text style={{textAlign: 'center', color: '#E71B8D', fontSize: 32}}> {this.props.packagePrice} </Text>
-                        <Text style={{textAlign: 'center', fontSize: 10}}> {this.props.packageCurrency} </Text>
+                        <Text style={{textAlign: 'center', fontSize: 10, fontFamily: 'kanit-light'}}> {this.props.packageCurrency} </Text>
                     </View>
                     <View style={styles.packageContentItem2}>
                         <View style={styles.packageContentSubContainer}>
                             <Image source={require('../../assets/package/phone-512.png')} style={{width: 20, height: 20}}/>
-                            <Text> {this.props.packageCallDuration} </Text>
+                            <Text style={{fontSize: 16, fontFamily: 'kanit-light'}}> {this.props.packageCallDuration} </Text>
                         </View>
                         <View style={styles.packageContentSubContainer}>
                             <Image source={require('../../assets/package/46.Calendar-512.png')} style={{width: 20, height: 20}}/>
-                            <Text> {this.props.packageDays} </Text>
+                            <Text style={{fontSize: 16, fontFamily: 'kanit-light'}}> {this.props.packageDays} </Text>
                         </View>
                     </View>
                 </View>
@@ -29,7 +45,7 @@ class PackageContent extends Component {
                     style={styles.packageDetailButton}
                     activeOpacity={0.5}
                 >
-                    <Text style={{color: '#ffffff', fontFamily: 'niramit-regular', textAlign: 'center', fontSize: 16}}> Detail </Text>
+                    <Text style={{color: '#ffffff', fontFamily: 'kanit-light', textAlign: 'center', fontSize: 16}}> Detail </Text>
                 </TouchableOpacity>
             </Card>
         );
@@ -50,7 +66,7 @@ const styles = StyleSheet.create({
     packageInfoLabel: {
         flex: 1,
         fontSize: 14,
-        fontFamily: 'niramit-regular'
+        fontFamily: 'kanit-light'
     },
     packageContentLabel: {
         flex: 1,
@@ -73,7 +89,7 @@ const styles = StyleSheet.create({
         flex: 0.3,
         flexDirection: 'column',
         paddingTop: 30,
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
         paddingLeft: 20,
     },
     packageContentItem2: {
@@ -81,7 +97,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         paddingLeft: 20,
         paddingTop: 38,
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
     },
     packageContentSubContainer: {
         flexDirection: 'row',

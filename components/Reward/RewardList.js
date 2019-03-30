@@ -36,7 +36,7 @@ export class RewardList extends Component {
 
     async componentDidMount() {
         await Font.loadAsync({
-            'niramit-regular': require('../../assets/fonts/Niramit-Regular.ttf')
+            'kanit-light': require('../../assets/fonts/Kanit/Kanit-Light.ttf')
         });
         this.setState({ fontLoaded: true });
     }
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#66e0ff',
         textAlign: 'left',
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
         fontWeight: 'bold'
     },
     textDesc: {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         marginBottom: 7,
         fontSize: 15,
         textAlign: 'left',
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
     }
 });
 

@@ -114,9 +114,9 @@ class NavBar extends Component {
     async componentDidMount() {
         styles.pressedNav = null;
         await Font.loadAsync({
-            'niramit-regular': require('../../assets/fonts/Niramit-Regular.ttf')
+            'kanit-light': require('../../assets/fonts/Kanit/Kanit-Light.ttf')
         });
-        this.setState({fontLoaded: true});
+        this.setState({ fontLoaded: true });
     }
 
     render() {
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        fontFamily: 'niramit-regular',
+        fontFamily: 'kanit-light',
         fontSize: 14,
     },
     iconPicContainer: {

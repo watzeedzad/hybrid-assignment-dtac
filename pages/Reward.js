@@ -24,7 +24,7 @@ class Reward extends Component {
 
     async componentDidMount() {
         await Font.loadAsync({
-            'niramit-regular': require('../assets/fonts/Niramit-Regular.ttf')
+            'kanit-light': require('../assets/fonts/Kanit/Kanit-Light.ttf')
         });
         this.setState({ fontLoaded: true });
     }
