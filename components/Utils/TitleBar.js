@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         backgroundColor: '#19AAF8',
-        marginTop: StatusBar.currentHeight,
+        // marginTop: StatusBar.currentHeight,
     },
     subContainerLeft: {
         flex: 0.5,
