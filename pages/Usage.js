@@ -1,10 +1,9 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import PreviousUsage from './PreviousUsage';
 import UsageContent from './UsageContent';
-import TitleBar from '../components/Utils/TitleBar';
+import Outstanding from './Outstanding'
 
 // create a component
 class Usage extends Component {
@@ -21,6 +20,10 @@ class Usage extends Component {
                     />
                     <Scene key="previousUsage"
                         component={PreviousUsage}
+                        hideNavBar={true}
+                    />
+                    <Scene key="outstanding"
+                        component={Outstanding}
                         hideNavBar={true}
                     />
                 </Scene>
