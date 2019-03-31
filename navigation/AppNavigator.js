@@ -1,36 +1,24 @@
-import React, {
-  Component
-} from 'react';
-import {
-  View,
-  Text
-} from 'react-native';
+import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   createStackNavigator,
   createBottomTabNavigator,
   createDrawerNavigator,
-  createAppContainer
+  createAppContainer,
+  createSwitchNavigator
 } from 'react-navigation';
 import UsagePage from '../pages/Usage';
 import PackagePage from '../pages/Package';
 import RewardPage from '../pages/Reward';
 import CampaignPage from '../pages/Campaign';
 import OtherPage from '../pages/Other';
+import PreviousUsagePage from '../pages/PreviousUsage';
 
-// const AppNavigator = createStackNavigator(
-//  {
-//     Home: {
-//         screen: HomeContactList
-//     },
-//     Detail: {
-//         screen: DetailContactDetail
-//     }
-//  },
-//  {
-//     initialRouteName: "Home"
+// const AppNavigator = createStackNavigator({
+//   PreviousUsage: {
+//     screen: PreviousUsagePage
 //   }
-// ) ;
+// });
 
 const TabNavigator = createBottomTabNavigator({
   Home: {
@@ -87,6 +75,4 @@ const TabNavigator = createBottomTabNavigator({
   },
 });
 
-const TabNavContainer = createAppContainer(TabNavigator);
-
-export default TabNavContainer;
+export default createAppContainer(TabNavigator);
