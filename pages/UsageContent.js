@@ -27,6 +27,10 @@ class UsageContent extends Component {
         this.setState({ fontLoaded: true });
     }
 
+    _onPress() {
+        Actions.previousUsage();
+    }
+
     render() {
 
         if (!this.state.fontLoaded) {
@@ -62,7 +66,7 @@ class UsageContent extends Component {
                     <NewsCard />
 
                     <Text style={styles.link}>Check your previous call detail of the last 7 days</Text>
-                    <Text style={styles.link}>Check your previous usage of the last 3 months</Text>
+                    <Text style={styles.link} onPress={() => this._onPress()}>Check your previous usage of the last 3 months</Text>
                 </ScrollView>
             </View>
         );

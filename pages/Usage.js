@@ -8,9 +8,6 @@ import TitleBar from '../components/Utils/TitleBar';
 
 // create a component
 class Usage extends Component {
-    _onPress() {
-        this.props.navigation.navigate('PreviousUsage');
-    }
 
     render() {
         return (
