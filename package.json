@@ -13,7 +13,9 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-banner-carousel": "^1.0.3",
     "react-native-cardview": "^2.0.2",
+    "react-native-highcharts": "^1.0.2",
     "react-native-paper": "^2.14.0",
+    "react-native-pure-chart": "^0.0.24",
     "react-native-router-flux": "^4.0.6",
     "react-navigation": "^3.5.1"
   },

@@ -1,9 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Font, AppLoading } from 'expo';
-
-let tintColorText = '';
 
 // create a component
 class NavBar extends Component {
