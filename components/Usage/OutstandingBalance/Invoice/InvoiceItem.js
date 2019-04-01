@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, Button } from 'react-native'
+import { Text, View, StyleSheet, Image } from 'react-native'
+import GradientButton from 'react-native-gradient-buttons'
 
 export class InvoiceItem extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flex:0.5}}>
+                <View style={{ flex: 0.4 }}>
                     <Text style={styles.month}>{this.props.item.month}</Text>
                     <View style={{ flexDirection: 'row', marginBottom: 5 }}>
                         <Image source={require('../../../../assets/usage/outstanding/calendar.jpg')} />
@@ -16,8 +17,18 @@ export class InvoiceItem extends Component {
                         <Text style={styles.price}>{this.props.item.price}</Text>
                     </View>
                 </View>
-                <View style={{flex:0.4, flexDirection:'row-reverse'}}>
-                    <Button title={'Download'}></Button>
+                <View style={{ flex: 0.6, flexDirection: 'row-reverse', alignItems: 'center' }}>
+                    <GradientButton
+                        text="Download"
+                        textStyle={{ fontSize: 14 }}
+                        gradientBegin="#7F2A71"
+                        gradientEnd="#D83A79"
+                        gradientDirection="diagonal"
+                        radius={4}
+                        width={130}
+                        height={35}
+                        onPressAction={() => {}}
+                    />
                 </View>
             </View>
         )
