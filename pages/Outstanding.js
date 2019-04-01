@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Image, Dimensions, ScrollView } from 'react-native'
+import { View, StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import BackTitleBar from '../components/Utils/BackTitleBar';
 import { Font, AppLoading } from 'expo';
@@ -82,12 +82,14 @@ export class Outstanding extends Component {
                                 source={require("../assets/usage/outstanding/button1.jpg")}
                             />
                         </View>
-                        <View style={{ flex: 1, marginLeft: 15 }}>
-                            <Image
-                                style={{ height: 30 }}
-                                source={require("../assets/usage/outstanding/button2.jpg")}
-                            />
-                        </View>
+                        <TouchableOpacity style={{ flex: 1, marginLeft: 15 }} onPress={() => Actions.invoice()}>
+                            <View>
+                                <Image
+                                    style={{ height: 30 }}
+                                    source={require("../assets/usage/outstanding/button2.jpg")}
+                                />
+                            </View>
+                        </TouchableOpacity >
                         <View style={{ flex: 2, marginLeft: 15 }}>
                             <Image
                                 style={{ height: 30 }}
