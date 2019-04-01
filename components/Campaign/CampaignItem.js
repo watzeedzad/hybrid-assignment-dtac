@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, Image, Dimensions, StyleSheet } from 'react-native'
+import { Text, View, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import { Card } from 'react-native-paper'
 import { Font, AppLoading } from 'expo';
+import { Actions } from 'react-native-router-flux';
 
 export class CampaignItem extends Component {
     constructor(props) {
@@ -10,6 +11,12 @@ export class CampaignItem extends Component {
         this.state = {
             fontLoaded: false
         }
+    }
+
+    _onPress() {
+        Actions.campaignDetail({
+            detailData: this.props.item.detailData
+        });
     }
 
     async componentDidMount() {
@@ -27,13 +34,17 @@ export class CampaignItem extends Component {
 
         return (
             <Card style={styles.card} elevation={3}>
-                <View style={{ flex: 1, padding: 5 }}>
-                    <Image
-                        style={styles.image}
-                        source={this.props.item.image}
-                    />
-                </View>
-                <Text style={styles.campaignName}>{this.props.item.text}</Text>
+                <TouchableOpacity
+                    onPress={() => this._onPress()}
+                >
+                    <View style={{ flex: 1, padding: 5 }}>
+                        <Image
+                            style={styles.image}
+                            source={this.props.item.image}
+                        />
+                    </View>
+                    <Text style={styles.campaignName}>{this.props.item.text}</Text>
+                </TouchableOpacity>
             </Card>
         )
     }

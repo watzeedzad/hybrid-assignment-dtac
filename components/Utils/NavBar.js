@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Font, AppLoading } from 'expo';
+import { Actions } from 'react-native-router-flux';
 
 // create a component
 class NavBar extends Component {
@@ -35,6 +36,7 @@ class NavBar extends Component {
         this.setState({
             otherNavStatus: false
         });
+        Actions.usage();
     }
 
     _onPressPackage = () => {
@@ -53,6 +55,7 @@ class NavBar extends Component {
         this.setState({
             otherNavStatus: false
         });
+        Actions.package();
     }
 
     _onPressReward = () => {
@@ -71,6 +74,7 @@ class NavBar extends Component {
         this.setState({
             otherNavStatus: false
         });
+        Actions.reward();
     }
 
     _onPressCampaign = () => {
@@ -89,6 +93,7 @@ class NavBar extends Component {
         this.setState({
             otherNavStatus: false
         });
+        Actions.campaign();
     }
 
     _onPressOther = () => {
@@ -107,6 +112,7 @@ class NavBar extends Component {
         this.setState({
             otherNavStatus: true
         });
+        Actions.other();
     }
 
     async componentDidMount() {
