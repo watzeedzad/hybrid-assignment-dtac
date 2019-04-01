@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import BackTitleBar from '../components/Utils/BackTitleBar';
-import PureChart from 'react-native-pure-chart';
 import { Font, AppLoading } from 'expo';
 import ChartView from 'react-native-highcharts';
 

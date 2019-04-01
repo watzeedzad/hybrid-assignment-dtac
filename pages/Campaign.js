@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, FlatList, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, FlatList, ScrollView, Image } from 'react-native';
 import TitleBar from '../components/Utils/TitleBar';
 import CampaignItem from '../components/Campaign/CampaignItem';
-import { Actions } from 'react-native-router-flux';
 
 const campaignDetailData = [{
     title: "Win!! exclusive fans meet with the Toys",
