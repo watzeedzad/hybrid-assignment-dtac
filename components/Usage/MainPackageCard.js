@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { Card } from 'react-native-paper'
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 export class MainPackageCard extends Component {
+
+    _onPress() {
+        Actions.mainPackage();
+    }
+
     render() {
         return (
-            <Card style={styles.container} elevation={5}>
+            <Card style={styles.container} elevation={5} onPress={() => this._onPress()}>
                 <View style={{ flexDirection: 'row' }}>
                     <Image
                         source={require("../../assets/usage/mainPackage.jpg")}

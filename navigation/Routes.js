@@ -9,6 +9,7 @@ import RewardPage from '../pages/Reward';
 import CampaignPage from '../pages/Campaign';
 import OtherPage from '../pages/Other';
 import CampaignDetail from '../pages/CampaignDetail';
+import MainPackage from '../pages/MainPackage'
 
 // create a component
 class Routes extends Component {
@@ -42,6 +43,9 @@ class Routes extends Component {
                     />
                     <Scene key="campaignDetail"
                         component={CampaignDetail}
+                    />
+                    <Scene key="mainPackage"
+                        component={MainPackage}
                     />
                 </Scene>
             </Router>

@@ -68,7 +68,7 @@ export class Outstanding extends Component {
             <View style={styles.container}>
                 <BackTitleBar
                     onPress={() => this._onPress()}
-                    titleText={'Previous Usage'}
+                    titleText={'Payment & Invoice'}
                 />
                 <ScrollView>
                     <Image
