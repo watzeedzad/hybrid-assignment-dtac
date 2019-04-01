@@ -30,7 +30,7 @@ class TopNavElement extends Component {
                 <View style={styles.iconContainer}>
                     <Image style={styles.iconPic} source={this.props.iconPic}/>
                 </View>
-                <Text style={styles.titleText}> {this.props.titleText} </Text>
+                <Text style={styles.titleText}>{this.props.titleText}</Text>
             </View>
         );
     }
@@ -39,7 +39,7 @@ class TopNavElement extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+        flex: 1,
         backgroundColor: '#FFFFFF',
         margin: 5,
         // padding: 4,
