@@ -15,7 +15,8 @@ export class CampaignItem extends Component {
 
     _onPress() {
         Actions.campaignDetail({
-            detailData: this.props.item.detailData
+            detailData: this.props.item.detailData,
+            bannerPic: this.props.item.image
         });
     }
 
